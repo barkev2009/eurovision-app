@@ -54,7 +54,7 @@ ROOT_URLCONF = 'eurovision.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [f'{BASE_DIR}/eurovision-ui/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = f'{BASE_DIR}/static'
+STATICFILES_DIRS = (
+    f'{BASE_DIR}/eurovision-ui/build/static',
+)
