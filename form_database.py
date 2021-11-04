@@ -13,23 +13,23 @@ def conn_and_cursor():
     return conn, cursor
 
 
-def add_songs(data):
+def add(table, data):
     conn, cursor = conn_and_cursor()
     try:
         if type(data) == list:
             for record in data:
-                query = """insert into songs {} values {}""".format(
-                    tuple(record.keys()), tuple(record.values())
+                query = """insert into {} {} values {}""".format(
+                    table, tuple(record.keys()), tuple(record.values())
                 )
                 cursor.execute(query)
                 conn.commit()
         elif type(data) == dict:
-            cursor.execute(f'insert into songs {tuple(data.keys())} values {tuple(data.values())}')
+            cursor.execute(f'insert into {table} {tuple(data.keys())} values {tuple(data.values())}')
             conn.commit()
         else:
             print('Failed to perform query')
-        cursor.execute('select * from songs')
-        print(cursor.fetchall())
+        cursor.execute(f'select * from {table}')
+        print(*cursor.fetchall(), sep='\n')
     except Error as e:
         print(e)
     finally:
@@ -54,10 +54,10 @@ def get_all_songs():
     conn, cursor = conn_and_cursor()
     result = None
     try:
-        query = f'select * from songs'
+        query = f'select s.id, s.name, a.name, a.country from songs s join authors a on s.author_id = a.id'
         cursor.execute(query)
         result = cursor.fetchall()
-        result = [dict(zip(['song_id', 'song_name', 'artist_id'], item)) for item in result]
+        result = [dict(zip(['song_id', 'song_name', 'artist_name', 'country'], item)) for item in result]
     except Error as e:
         print(e)
     finally:
@@ -68,3 +68,15 @@ def get_all_songs():
 
 if __name__ == '__main__':
     print(json.dumps(get_all_songs(), indent=4))
+    # add('songs',
+    #     [
+    #         {
+    #             "author_id": "2",
+    #             "name": "Zitti e Buoni"
+    #         },
+    #         {
+    #             "author_id": "3",
+    #             "name": "RockSong"
+    #         }
+    #     ]
+    #     )
