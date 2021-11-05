@@ -1,19 +1,24 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-import form_database as sql
+from rest_framework import viewsets
+from .serializers import SongSerializer, ArtistSerializer, SongListRetrieveSerializer
+from ..models import Song, Artist
 
 
-class TestAPIView(APIView):
-	def get(self, request, *args, **kwargs):
-		data = sql.get_all_songs()
-		# data = [
-		# 	{
-		# 		"id": 1,
-		# 		"name": 'John'
-		# 	},
-		# 	{
-		# 		"id": 2,
-		# 		"name": 'Jane'
-		# 	}
-		# ]
-		return Response(data)
+class SongViewSet(viewsets.ModelViewSet):
+	queryset = Song.objects.all()
+	serializer_class = SongSerializer
+
+	action_to_serialize = {
+		'list': SongListRetrieveSerializer,
+		'retrieve': SongListRetrieveSerializer
+	}
+
+	def get_serializer_class(self):
+		return self.action_to_serialize.get(
+			self.action,
+			self.serializer_class
+		)
+
+
+class ArtistViewSet(viewsets.ModelViewSet):
+	queryset = Artist.objects.all()
+	serializer_class = ArtistSerializer

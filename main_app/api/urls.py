@@ -1,7 +1,11 @@
 from django.urls import path
-from .views import TestAPIView
+from rest_framework import routers
+from .views import SongViewSet, ArtistViewSet
 
 
-urlpatterns = [
-	path('test-api/', TestAPIView.as_view(), name='test')
-]
+router = routers.SimpleRouter()
+router.register('songs', SongViewSet, basename='songs')
+router.register('artists', ArtistViewSet, basename='artists')
+
+urlpatterns = []
+urlpatterns += router.urls

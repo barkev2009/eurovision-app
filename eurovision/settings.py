@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
+    'main_app'
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'eurovision.urls'
@@ -55,7 +59,8 @@ ROOT_URLCONF = 'eurovision.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f'{BASE_DIR}/eurovision-ui/build'],
+        'DIRS': [],
+        # 'DIRS': [f'{BASE_DIR}/eurovision-ui/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +128,5 @@ STATIC_ROOT = f'{BASE_DIR}/static'
 STATICFILES_DIRS = (
     f'{BASE_DIR}/eurovision-ui/build/static',
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
