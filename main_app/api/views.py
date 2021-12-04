@@ -1,6 +1,15 @@
 from rest_framework import viewsets
-from .serializers import SongSerializer, ArtistSerializer, SongListRetrieveSerializer
-from ..models import Song, Artist
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from .serializers import (
+	SongSerializer,
+	ArtistSerializer,
+	SongListRetrieveSerializer,
+	ContestStepSerializer,
+	EntrySerializer,
+	YearSerializer
+)
+from ..models import Song, Artist, ContestStep, Entry, Year
 
 
 class SongViewSet(viewsets.ModelViewSet):
@@ -22,3 +31,18 @@ class SongViewSet(viewsets.ModelViewSet):
 class ArtistViewSet(viewsets.ModelViewSet):
 	queryset = Artist.objects.all()
 	serializer_class = ArtistSerializer
+
+
+class EntryViewSet(viewsets.ModelViewSet):
+	queryset = Entry.objects.all()
+	serializer_class = EntrySerializer
+
+
+class YearViewSet(viewsets.ModelViewSet):
+	queryset = Year.objects.all()
+	serializer_class = YearSerializer
+
+
+class ContestStepViewSet(viewsets.ModelViewSet):
+	queryset = ContestStep.objects.all()
+	serializer_class = ContestStepSerializer

@@ -1,82 +1,94 @@
 import sqlite3
 from sqlite3 import Error
 import json
+import pandas as pd
 
 
 def conn_and_cursor():
     conn = cursor = None
     try:
-        conn = sqlite3.connect('eurovision.db')
+        conn = sqlite3.connect('db.sqlite3')
         cursor = conn.cursor()
     except Error as e:
         print(e)
     return conn, cursor
 
 
-def add(table, data):
+def get_all_countries():
     conn, cursor = conn_and_cursor()
-    try:
-        if type(data) == list:
-            for record in data:
-                query = """insert into {} {} values {}""".format(
-                    table, tuple(record.keys()), tuple(record.values())
-                )
-                cursor.execute(query)
-                conn.commit()
-        elif type(data) == dict:
-            cursor.execute(f'insert into {table} {tuple(data.keys())} values {tuple(data.values())}')
-            conn.commit()
-        else:
-            print('Failed to perform query')
-        cursor.execute(f'select * from {table}')
-        print(*cursor.fetchall(), sep='\n')
-    except Error as e:
-        print(e)
-    finally:
-        if conn:
-            conn.close()
+    cursor.execute('select * from main_app_country')
+    return {item[1]: item[0] for item in [*cursor.fetchall()]}
 
 
-def delete_songs_by_id(id):
+def get_all_steps():
     conn, cursor = conn_and_cursor()
-    try:
-        query = f'delete from songs where id = {id}'
-        cursor.execute(query)
-        conn.commit()
-    except Error as e:
-        print(e)
-    finally:
-        if conn:
-            conn.close()
+    cursor.execute('select * from main_app_conteststep')
+    return {item[1]: item[0] for item in [*cursor.fetchall()]}
+
+
+def get_all_artists():
+    conn, cursor = conn_and_cursor()
+    cursor.execute('select * from main_app_artist')
+    return {item[1]: item[0] for item in [*cursor.fetchall()]}
 
 
 def get_all_songs():
     conn, cursor = conn_and_cursor()
-    result = None
-    try:
-        query = f'select s.id, s.name, a.name, a.country from songs s join authors a on s.author_id = a.id'
-        cursor.execute(query)
-        result = cursor.fetchall()
-        result = [dict(zip(['song_id', 'song_name', 'artist_name', 'country'], item)) for item in result]
-    except Error as e:
-        print(e)
-    finally:
-        if conn:
-            conn.close()
-    return result
+    cursor.execute('select * from main_app_song')
+    return {item[1]: item[0] for item in [*cursor.fetchall()]}
+
+
+def get_all_years():
+    conn, cursor = conn_and_cursor()
+    cursor.execute('select * from main_app_year')
+    return {item[1]: item[0] for item in [*cursor.fetchall()]}
+
+
+def add_entries():
+    countries = get_all_countries()
+    all_entries = pd.read_csv('db_files/entries_2016.csv', delimiter=',', header=None, encoding='utf-8')
+    entry_records = all_entries.to_records()
+    # entry = entry_records[0]
+    # print(entry)
+
+    conn, cursor = conn_and_cursor()
+    artist_query = 'insert into main_app_artist (name, country_id) values ("{}", {})'
+    song_query = 'insert into main_app_song (name, artist_id) values ("{}", {})'
+    entry_query = "insert into main_app_entry (contest_step_id, song_id, 'order', year_id, qualified, purity, " \
+                  "difficulty, originality, show, sympathy) values ({}, {}, {}, {}, 0, 0, 0, 0, 0, 0)"
+
+    for entry in entry_records:
+        print(entry)
+
+        full_artist_query = artist_query.format(
+            entry[-2],
+            countries.get(entry[-3])
+        )
+        if entry[-2] not in get_all_artists().keys():
+            print(full_artist_query)
+            cursor.execute(full_artist_query)
+            conn.commit()
+
+        full_song_query = song_query.format(
+            entry[-1],
+            get_all_artists().get(entry[-2])
+        )
+        if entry[-1] not in get_all_songs().keys():
+            print(full_song_query)
+            cursor.execute(full_song_query)
+            conn.commit()
+
+        full_entry_query = entry_query.format(
+            get_all_steps().get(entry[1]),
+            get_all_songs().get(entry[-1]),
+            entry[3],
+            get_all_years().get(entry[2])
+        )
+        print(full_entry_query)
+        cursor.execute(full_entry_query)
+        conn.commit()
 
 
 if __name__ == '__main__':
-    print(json.dumps(get_all_songs(), indent=4))
-    # add('songs',
-    #     [
-    #         {
-    #             "author_id": "2",
-    #             "name": "Zitti e Buoni"
-    #         },
-    #         {
-    #             "author_id": "3",
-    #             "name": "RockSong"
-    #         }
-    #     ]
-    #     )
+    # print(get_all_years())
+    add_entries()
