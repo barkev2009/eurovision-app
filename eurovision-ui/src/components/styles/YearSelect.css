@@ -1,0 +1,28 @@
+.select-container {
+    width: 700px;
+    height: 50px;
+    font-family: inherit;
+    appearance: none;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.select {
+    position: relative;
+}
+
+.select select {
+    width: auto;
+    height: 50px;
+    font-family: inherit;
+    appearance: none;
+    font-size: 30px;
+    background-color: rgb(101, 33, 165);
+    border: 1px solid blue;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
