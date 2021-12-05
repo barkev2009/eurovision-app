@@ -51,6 +51,7 @@ def add_entries():
     # entry = entry_records[0]
     # print(entry)
 
+
     conn, cursor = conn_and_cursor()
     artist_query = 'insert into main_app_artist (name, country_id) values ("{}", {})'
     song_query = 'insert into main_app_song (name, artist_id) values ("{}", {})'
