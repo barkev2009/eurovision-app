@@ -91,8 +91,8 @@ function App() {
       <header className="App-header">
         <div className="select-container">
           <div className='header'></div>
-          <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step"/>
-          <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year"/>
+          <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
+          <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
         </div>
         <div className='name-prompt'>{promptTranslation[prompt]}</div>
         <List entries={entries} callPrompt={changePrompt}/>

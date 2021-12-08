@@ -35,10 +35,10 @@
 }
 
 .name-prompt {
-  font-size: 24px;
+  font-size: 70%;
   background-color: teal;
   border: 2px solid darkblue;
-  width: 600px;
+  width: 25%;
   height: 50px;
   vertical-align: middle;
   text-align: center;
