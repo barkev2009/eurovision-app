@@ -102,6 +102,7 @@ function App() {
           <div className='name-prompt'>{promptTranslation[prompt]}</div>
         </div>
         <List entries={entries} callPrompt={changePrompt}/>
+        <div style={{fontSize: '14px', paddingBottom: '4px'}}>My e-mail</div>
       </header>
     </div>
   );
