@@ -1,9 +1,9 @@
 import React from 'react'
-import countryList from 'react-select-country-list';
+import countryCodes from '../countryCodes';
 
 const EuroFlag = ({country}) => {
 
-    const countryCode = countryList().getValue(country)
+    const countryCode = countryCodes.filter(country_obj => country_obj.label === country)[0].value
 
     return (
         <div className='flag'>
