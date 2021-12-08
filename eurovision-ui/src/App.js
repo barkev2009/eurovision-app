@@ -29,6 +29,10 @@ function App() {
 
   // Setting initial data
   useEffect(() => {
+    document.title = 'Eurovision-App'
+  }, [])
+
+  useEffect(() => {
     axios({
       method: "GET",
       url: 'http://127.0.0.1:8000/api/entries/'
