@@ -28,6 +28,18 @@ class ArtistSerializer(serializers.ModelSerializer):
 		model = Artist
 		fields = '__all__'
 
+	def update(self, instance, validated_data):
+		country_data = validated_data.pop('country')
+		country = instance.country
+
+		instance.name = validated_data.get('name', instance.name)
+		instance.save()
+
+		country.name = country_data.get('name', country.name)
+		country.save()
+
+		return instance
+
 
 class SongListRetrieveSerializer(serializers.ModelSerializer):
 	artist = ArtistSerializer()

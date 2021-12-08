@@ -93,8 +93,8 @@ function App() {
           <div className='header'></div>
           <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
           <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
+          <div className='name-prompt'>{promptTranslation[prompt]}</div>
         </div>
-        <div className='name-prompt'>{promptTranslation[prompt]}</div>
         <List entries={entries} callPrompt={changePrompt}/>
       </header>
     </div>

@@ -7,9 +7,10 @@ from .serializers import (
 	SongListRetrieveSerializer,
 	ContestStepSerializer,
 	EntrySerializer,
-	YearSerializer
+	YearSerializer,
+	CountrySerializer
 )
-from ..models import Song, Artist, ContestStep, Entry, Year
+from ..models import Song, Artist, ContestStep, Entry, Year, Country
 
 
 class SongViewSet(viewsets.ModelViewSet):
@@ -46,3 +47,8 @@ class YearViewSet(viewsets.ModelViewSet):
 class ContestStepViewSet(viewsets.ModelViewSet):
 	queryset = ContestStep.objects.all()
 	serializer_class = ContestStepSerializer
+
+
+class CountryViewSet(viewsets.ModelViewSet):
+	queryset = Country.objects.all()
+	serializer_class = CountrySerializer

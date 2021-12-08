@@ -994,6 +994,206 @@ const countryCodes = [
     {
       "value": "ZW",
       "label": "Zimbabwe"
+    },
+    {
+        "value": "Flag_of_Idaho",
+        "label": "US, Idaho"
+    },
+    {
+        "value": "Flag_of_Iowa",
+        "label": "US, Iowa"
+    },
+    {
+        "value": "Flag_of_Alabama",
+        "label": "US, Alabama"
+    },
+    {
+        "value": "Flag_of_Alaska",
+        "label": "US, Alaska"
+    },
+    {
+        "value": "Flag_of_Arizona",
+        "label": "US, Arizona"
+    },
+    {
+        "value": "Flag_of_Arkansas",
+        "label": "US, Arkansas"
+    },
+    {
+        "value": "Flag_of_Wyoming",
+        "label": "US, Wyoming"
+    },
+    {
+        "value": "Flag_of_Washington",
+        "label": "US, Washington"
+    },
+    {
+        "value": "Flag_of_Vermont",
+        "label": "US, Vermont"
+    },
+    {
+        "value": "Flag_of_Virginia",
+        "label": "US, Virginia"
+    },
+    {
+        "value": "Flag_of_Wisconsin",
+        "label": "US, Wisconsin"
+    },
+    {
+        "value": "Flag_of_Hawaii",
+        "label": "US, Hawaii"
+    },
+    {
+        "value": "Flag_of_Delaware",
+        "label": "US, Delaware"
+    },
+    {
+        "value": "Flag_of_Georgia_(U.S._state)",
+        "label": "US, Georgia"
+    },
+    {
+        "value": "Flag_of_West_Virginia",
+        "label": "US, West Virginia"
+    },
+    {
+        "value": "Flag_of_Illinois",
+        "label": "US, Illinois"
+    },
+    {
+        "value": "Flag_of_Indiana",
+        "label": "US, Indiana"
+    },
+    {
+        "value": "Flag_of_California",
+        "label": "US, California"
+    },
+    {
+        "value": "Flag_of_Kansas",
+        "label": "US, Kansas"
+    },
+    {
+        "value": "Flag_of_Kentucky",
+        "label": "US, Kentucky"
+    },
+    {
+        "value": "Flag_of_Colorado_designed_by_Andrew_Carlisle_Carson",
+        "label": "US, Colorado"
+    },
+    {
+        "value": "Flag_of_Connecticut",
+        "label": "US, Connecticut"
+    },
+    {
+        "value": "Flag_of_Louisiana",
+        "label": "US, Louisiana"
+    },
+    {
+        "value": "Flag_of_Massachusetts",
+        "label": "US, Massachusetts"
+    },
+    {
+        "value": "Flag_of_Minnesota",
+        "label": "US, Minnesota"
+    },
+    {
+        "value": "Flag_of_Mississippi",
+        "label": "US, Mississippi"
+    },
+    {
+        "value": "Flag_of_Missouri",
+        "label": "US, Missouri"
+    },
+    {
+        "value": "Flag_of_Michigan",
+        "label": "US, Michigan"
+    },
+    {
+        "value": "Flag_of_Montana",
+        "label": "US, Montana"
+    },
+    {
+        "value": "Flag_of_Maine",
+        "label": "US, Maine"
+    },
+    {
+        "value": "Flag_of_Maryland",
+        "label": "US, Maryland"
+    },
+    {
+        "value": "Flag_of_Nebraska",
+        "label": "US, Nebraska"
+    },
+    {
+        "value": "Flag_of_Nevada",
+        "label": "US, Nevada"
+    },
+    {
+        "value": "Flag_of_New_Hampshire",
+        "label": "US, New Hampshire"
+    },
+    {
+        "value": "Flag_of_New_Jersey",
+        "label": "US, New Jersey"
+    },
+    {
+        "value": "Flag_of_New_York",
+        "label": "US, New York"
+    },
+    {
+        "value": "Flag_of_New_Mexico",
+        "label": "US, New Mexico"
+    },
+    {
+        "value": "Flag_of_Ohio",
+        "label": "US, Ohio"
+    },
+    {
+        "value": "Flag_of_Oklahoma",
+        "label": "US, Oklahoma"
+    },
+    {
+        "value": "Flag_of_Oregon",
+        "label": "US, Oregon"
+    },
+    {
+        "value": "Flag_of_Pennsylvania",
+        "label": "US, Pennsylvania"
+    },
+    {
+        "value": "Flag_of_Rhode_Island",
+        "label": "US, Rhode Island"
+    },
+    {
+        "value": "Flag_of_North_Dakota",
+        "label": "US, North Dakota"
+    },
+    {
+        "value": "Flag_of_North_Carolina",
+        "label": "US, North Carolina"
+    },
+    {
+        "value": "Flag_of_Tennessee",
+        "label": "US, Tennessee"
+    },
+    {
+        "value": "Flag_of_Texas",
+        "label": "US, Texas"
+    },
+    {
+        "value": "Flag_of_Florida",
+        "label": "US, Florida"
+    },
+    {
+        "value": "Flag_of_South_Dakota",
+        "label": "US, South Dakota"
+    },
+    {
+        "value": "Flag_of_South_Carolina",
+        "label": "US, South Carolina"
+    },
+    {
+        "value": "Flag_of_Utah",
+        "label": "US, Utah"
     }
   ];
   

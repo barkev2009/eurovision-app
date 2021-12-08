@@ -90,6 +90,67 @@ def add_entries():
         conn.commit()
 
 
+def add_countries(countries_list: list):
+    conn, cursor = conn_and_cursor()
+    query = 'insert into main_app_country (name) values ("{}")'
+    for country in countries_list:
+        print(query.format(country))
+        cursor.execute(query.format(country))
+        conn.commit()
+
+
 if __name__ == '__main__':
     # print(get_all_years())
-    add_entries()
+    # add_entries()
+    countries = [
+        "US, Iowa",
+        "US, Alabama",
+        "US, Alaska",
+        "US, Arizona",
+        "US, Arkansas",
+        "US, Wyoming",
+        "US, Washington",
+        "US, Vermont",
+        "US, Virginia",
+        "US, Wisconsin",
+        "US, Hawaii",
+        "US, Delaware",
+        "US, Georgia",
+        "US, West Virginia",
+        "US, Illinois",
+        "US, Indiana",
+        "US, California",
+        "US, Kansas",
+        "US, Kentucky",
+        "US, Colorado",
+        "US, Connecticut",
+        "US, Louisiana",
+        "US, Massachusetts",
+        "US, Minnesota",
+        "US, Mississippi",
+        "US, Missouri",
+        "US, Michigan",
+        "US, Montana",
+        "US, Maine",
+        "US, Maryland",
+        "US, Nebraska",
+        "US, Nevada",
+        "US, New Hampshire",
+        "US, New Jersey",
+        "US, New York",
+        "US, New Mexico",
+        "US, Ohio",
+        "US, Oklahoma",
+        "US, Oregon",
+        "US, Pennsylvania",
+        "US, Rhode Island",
+        "US, North Dakota",
+        "US, North Carolina",
+        "US, Tennessee",
+        "US, Texas",
+        "US, Florida",
+        "US, South Dakota",
+        "US, South Carolina",
+        "US, Utah"
+    ]
+    # add_countries(countries)
