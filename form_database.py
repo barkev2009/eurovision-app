@@ -100,7 +100,7 @@ def add_countries(countries_list: list):
 
 
 if __name__ == '__main__':
-    # print(get_all_years())
+    print(get_all_years())
     # add_entries()
     countries = [
         "US, Iowa",
