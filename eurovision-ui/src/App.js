@@ -4,6 +4,7 @@ import axios from 'axios';
 import List from './components/List';
 import YearSelect from './components/YearSelect';
 import StepSelect from './components/StepSelect';
+import logo from './components/images/logo.png'
 
 function App() {
 
@@ -90,6 +91,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="select-container">
+          <img src={logo} alt='euro_logo'/>
           <div className='header'></div>
           <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
           <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
