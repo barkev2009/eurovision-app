@@ -44,15 +44,17 @@ def get_all_years():
     return {item[1]: item[0] for item in [*cursor.fetchall()]}
 
 
-def add_entries():
+def add_entries_by_year(year):
     countries = get_all_countries()
-    all_entries = pd.read_csv('db_files/entries_2016.csv', delimiter=',', header=None, encoding='utf-8')
+    all_entries = pd.read_csv(f'db_files/entries_{year}.csv', delimiter=',', header=None, encoding='utf-8')
     entry_records = all_entries.to_records()
     # entry = entry_records[0]
     # print(entry)
 
-
     conn, cursor = conn_and_cursor()
+    if year not in get_all_years().keys():
+        cursor.execute(f'insert into main_app_year (year) values ({year})')
+        conn.commit()
     artist_query = 'insert into main_app_artist (name, country_id) values ("{}", {})'
     song_query = 'insert into main_app_song (name, artist_id) values ("{}", {})'
     entry_query = "insert into main_app_entry (contest_step_id, song_id, 'order', year_id, qualified, purity, " \
@@ -100,8 +102,8 @@ def add_countries(countries_list: list):
 
 
 if __name__ == '__main__':
-    print(get_all_years())
-    # add_entries()
+    # print(get_all_years())
+    add_entries_by_year(2013)
     countries = [
         "US, Iowa",
         "US, Alabama",

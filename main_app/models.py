@@ -53,12 +53,11 @@ class Year(models.Model):
 class Entry(models.Model):
 	song = models.ForeignKey(Song, on_delete=models.PROTECT, verbose_name='Песня')
 
-	purity = models.DecimalField(verbose_name='Чистота исполнения песни', max_digits=3, decimal_places=2, default=0, null=True)
-	show = models.DecimalField(verbose_name='Наличие шоу в выступлении', max_digits=3, decimal_places=2, default=0, null=True)
-	difficulty = models.DecimalField(verbose_name='Сложность исполнения песни', max_digits=3, decimal_places=2, default=0, null=True)
-	originality = models.DecimalField(verbose_name='Оригинальность исполнения песни', max_digits=3, decimal_places=2,
-	                                  default=0, null=True)
-	sympathy = models.DecimalField(verbose_name='Личная симпатия', max_digits=3, decimal_places=2, default=0, null=True)
+	purity = models.FloatField(verbose_name='Чистота исполнения песни', default=0, null=True)
+	show = models.FloatField(verbose_name='Наличие шоу в выступлении', default=0, null=True)
+	difficulty = models.FloatField(verbose_name='Сложность исполнения песни', default=0, null=True)
+	originality = models.FloatField(verbose_name='Оригинальность исполнения песни', default=0, null=True)
+	sympathy = models.FloatField(verbose_name='Личная симпатия', default=0, null=True)
 
 	contest_step = models.ForeignKey(ContestStep, on_delete=models.PROTECT, verbose_name='Этап конкурса')
 	order = models.IntegerField(verbose_name='Порядок выступления', default=0)

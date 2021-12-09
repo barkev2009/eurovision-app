@@ -11,27 +11,27 @@ const ListItem = (props) => {
         {
             id: 0,
             name: 'purity',
-            score: parseFloat(entry.purity)
+            score: entry.purity
         },
         {
             id: 1,
             name: 'show',
-            score: parseFloat(entry.show)
+            score: entry.show
         },
         {
             id: 2,
             name: 'difficulty',
-            score: parseFloat(entry.difficulty)
+            score: entry.difficulty
         },
         {
             id: 3,
             name: 'originality',
-            score: parseFloat(entry.originality)
+            score: entry.originality
         },
         {
             id: 4,
             name: 'sympathy',
-            score: parseFloat(entry.sympathy)
+            score: entry.sympathy
         }
     ];
 
