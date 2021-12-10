@@ -59,6 +59,8 @@ class Entry(models.Model):
 	originality = models.FloatField(verbose_name='Оригинальность исполнения песни', default=0, null=True)
 	sympathy = models.FloatField(verbose_name='Личная симпатия', default=0, null=True)
 
+	place = models.IntegerField(verbose_name='Место участника', default=0, null=True)
+
 	contest_step = models.ForeignKey(ContestStep, on_delete=models.PROTECT, verbose_name='Этап конкурса')
 	order = models.IntegerField(verbose_name='Порядок выступления', default=0)
 	year = models.ForeignKey(Year, verbose_name='Год выступления', on_delete=models.PROTECT)

@@ -42,6 +42,12 @@
   height: 5rem;
 }
 
+.place-tab {
+  margin-left: 10px;
+  width: auto;
+  padding-right: 10px;
+}
+
 .qualtable {
   border: 1px solid teal;
   height: 50px;

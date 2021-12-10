@@ -1,9 +1,10 @@
 import StarContainer from './stars/StarContainer';
 import './styles/ListItem.css'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 import EuroFlag from './EuroFlag';
 import QualTable from './QualTable';
+import PlaceInput from './PlaceInput';
 
 const ListItem = (props) => {
     const entry = props.entry;
@@ -36,6 +37,24 @@ const ListItem = (props) => {
     ];
 
     const [starScore, setStarScore] = useState(score);
+    const [colorStyle, setColorStyle] = useState({background: 'blueviolet', color: 'white'})
+
+    useEffect(() => {
+        switch (entry.place) {
+            case 1:
+                setColorStyle({background: 'gold', color: 'black'});
+                break;
+            case 2:
+                setColorStyle({background: 'silver', color: 'black'});
+                break;
+            case 3:
+                setColorStyle({background: 'rgb(205, 127, 50)', color: 'black'});
+                break;
+            default:
+                setColorStyle({background: 'blueviolet', color: 'white'});
+                break;
+        }
+    }, [entry.place])
 
     const testFunc = (e) => {
         let newScore = [...starScore];
@@ -57,6 +76,28 @@ const ListItem = (props) => {
             {qualified : e}
         )
     }
+
+    const changeInput = (e) => {
+        axios.patch(
+            `http://127.0.0.1:8000/api/entries/${entry.id}/`,
+            {place : parseInt(e)}
+        )
+        switch (parseInt(e)) {
+            case 1:
+                setColorStyle({background: 'gold', color: 'black'});
+                break;
+            case 2:
+                setColorStyle({background: 'silver', color: 'black'});
+                break;
+            case 3:
+                setColorStyle({background: 'rgb(205, 127, 50)', color: 'black'});
+                break;
+            default:
+                setColorStyle({background: 'blueviolet', color: 'white'});
+                break;
+        }
+    }
+
     return (
         <div className='table-row' key={entry.id}>
             <div className='entry order'>{entry.order}</div>
@@ -72,9 +113,9 @@ const ListItem = (props) => {
             <div className='entry tab score'>{starScore.reduce((a, b) => a + b.score, 0).toFixed(2)}</div>
             <div>
                 {entry.contest_step.name !== 'Grand Final' ? 
-                <QualTable initQual={entry.qualified} callQual={callQual}/> : ''}
+                <QualTable initQual={entry.qualified} callQual={callQual}/> : 
+                <PlaceInput defaultValue={entry.place} onChange={changeInput} colorStyle={colorStyle}/>}
             </div>
-            
         </div>
     )
 }

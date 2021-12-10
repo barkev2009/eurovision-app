@@ -31,7 +31,7 @@ function App() {
 
   // Setting initial data
   useEffect(() => {
-    document.title = 'Eurovision-App'
+    document.title = 'Eurovision-Rating-App'
     curSortRule.current = localStorage.sortRule ? localStorage.sortRule : 'By entry order'
   }, [])
 
@@ -62,10 +62,21 @@ function App() {
       setSteps(response.data);
       curStep.current = localStorage.step ? localStorage.step : response.data[0].name
       const entriesToSet = [...initEntries].filter((entry) => entry.year.year === curYear.current && entry.contest_step.name === curStep.current)
-      curSortRule.current === 'By entry order' ?
-        setEntries(entriesToSet.sort((a, b) => a.order - b.order)) :
-        setEntries(entriesToSet.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a, b) => a + b, 0) - 
-        [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a, b) => a + b, 0)))
+      switch (curSortRule.current) {
+        case 'By entry order':
+          setEntries(entriesToSet.sort((a, b) => a.order - b.order));
+          break;
+        case 'By personal rating':
+          setEntries(entriesToSet.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) - 
+          [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a_s, b_s) => a_s + b_s, 0)));
+          break;
+        case 'By place':
+          setEntries(entriesToSet.sort((a, b) => a.place - b.place));
+          break;
+        default:
+          setEntries(entriesToSet.sort((a, b) => a.order - b.order));
+          break;                  
+      }
     })
     }, [initEntries])
 
@@ -80,10 +91,21 @@ function App() {
       url: 'http://127.0.0.1:8000/api/entries/'
     }).then(response => {
       const newEntries = response.data.filter((entry) => entry.year.year === curYear.current && entry.contest_step.name === curStep.current)
-      curSortRule.current === 'By entry order' ?
-        setEntries(newEntries.sort((a, b) => a.order - b.order)) :
-        setEntries(newEntries.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) - 
-        [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a_s, b_s) => a_s + b_s, 0)))
+      switch (curSortRule.current) {
+        case 'By entry order':
+          setEntries(newEntries.sort((a, b) => a.order - b.order));
+          break;
+        case 'By personal rating':
+          setEntries(newEntries.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) - 
+          [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a_s, b_s) => a_s + b_s, 0)));
+          break;
+        case 'By place':
+          setEntries(newEntries.sort((a, b) => a.place - b.place));
+          break;
+        default:
+          setEntries(newEntries.sort((a, b) => a.order - b.order));
+          break;                  
+      }
     })
   }
 
@@ -95,6 +117,9 @@ function App() {
 
   const changeFilterStep = (e) => {
     curStep.current = e
+    if (curStep.current !== 'Grand Final' && curSortRule.current === 'By place') {
+      curSortRule.current = 'By entry order'
+    }
     setAllEntries()
     localStorage.setItem('step', curStep.current)
   }
@@ -112,7 +137,7 @@ function App() {
         <div className="select-container">
           <img src={logo} alt='euro_logo'/>
           <div className='header'></div>
-          <SortSelect defaultValue='Choose the sorting rule' onChange={changeSortRule} curValue={curSortRule.current}/>
+          <SortSelect defaultValue='Choose the sorting rule' onChange={changeSortRule} curValue={curSortRule.current} curStep={curStep.current}/>
           <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
           <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
           <div className='name-prompt'>{promptTranslation[prompt]}</div>
