@@ -102,15 +102,6 @@ def add_countries(countries_list: list):
         conn.commit()
 
 
-def add_years(years):
-    conn, cursor = conn_and_cursor()
-    query = 'insert into main_app_year (year) values ({})'
-    for year in years:
-        print(query.format(year))
-        cursor.execute(query.format(year))
-        conn.commit()
-
-
 def add_contest_steps():
     conn, cursor = conn_and_cursor()
     steps = ('First Semi-Final', 'Second Semi-Final', 'Grand Final')
