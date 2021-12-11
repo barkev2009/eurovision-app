@@ -102,10 +102,30 @@ def add_countries(countries_list: list):
         conn.commit()
 
 
+def add_years(years):
+    conn, cursor = conn_and_cursor()
+    query = 'insert into main_app_year (year) values ({})'
+    for year in years:
+        print(query.format(year))
+        cursor.execute(query.format(year))
+        conn.commit()
+
+
+def add_contest_steps():
+    conn, cursor = conn_and_cursor()
+    steps = ('First Semi-Final', 'Second Semi-Final', 'Grand Final')
+    query = 'insert into main_app_conteststep (name) values ("{}")'
+    for step in steps:
+        print(query.format(step))
+        cursor.execute(query.format(step))
+        conn.commit()
+
+
 if __name__ == '__main__':
     # print(get_all_years())
     # add_entries_by_year(2009)
     countries = [
+        "US, Idaho"
         "US, Iowa",
         "US, Alabama",
         "US, Alaska",
@@ -154,6 +174,57 @@ if __name__ == '__main__':
         "US, Florida",
         "US, South Dakota",
         "US, South Carolina",
-        "US, Utah"
+        "US, Utah",
+        "Russia,"
+        "Italy",
+        "Moldova,"
+        "Georgia",
+        "Albania",
+        "Andorra",
+        "Armenia",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Belarus",
+        "Belgium",
+        "Bosnia and Herzegovina",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Iceland",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Monaco",
+        "Montenegro",
+        "Morocco",
+        "Netherlands",
+        "North Macedonia",
+        "Norway",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "San Marino",
+        "Serbia",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Turkey",
+        "Ukraine",
+        "United Kingdom"
     ]
     # add_countries(countries)
