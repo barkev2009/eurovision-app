@@ -65,7 +65,6 @@ class Entry(models.Model):
 	order = models.IntegerField(verbose_name='Порядок выступления', default=0)
 	year = models.ForeignKey(Year, verbose_name='Год выступления', on_delete=models.PROTECT)
 	qualified = models.BooleanField(verbose_name='Финалист', default=False, null=True)
-	test_field = models.IntegerField(verbose_name='Порядок выступления', default=0)
 
 	def __str__(self):
 		return f'Entry of song: {self.song} during the {self.contest_step} of ESC-{self.year}. ' \
