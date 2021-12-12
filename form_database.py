@@ -110,13 +110,22 @@ def add_entries_by_year(year):
             conn.commit()
 
 
-def add_countries(countries_list: list):
+def add_entries():
+    available_years = list({int(item.split('.')[0][-4:]) for item in os.listdir('db_files')})
+    for year in available_years:
+        add_entries_by_year(year)
+
+
+def add_countries():
     conn, cursor = conn_and_cursor()
     query = 'insert into main_app_country (name) values ("{}")'
-    for country in countries_list:
-        print(query.format(country))
-        cursor.execute(query.format(country))
-        conn.commit()
+    with open('countries.txt', 'r') as file:
+        countries = [item.replace('\n', '') for item in file.readlines()]
+    for country in countries:
+        if country not in get_all_countries().keys():
+            print(query.format(country))
+            cursor.execute(query.format(country))
+            conn.commit()
 
 
 def add_contest_steps():
@@ -132,117 +141,9 @@ def add_contest_steps():
 
 def fill_db():
     add_contest_steps()
-    available_years = list({int(item.split('.')[0][-4:]) for item in os.listdir('db_files')})
-    for year in available_years:
-        add_entries_by_year(year)
+    add_countries()
+    add_entries()
 
 
 if __name__ == '__main__':
-    # print(get_all_years())
-    # add_entries_by_year(2021)
     fill_db()
-    # print(get_all_songs().get(('Shine', 'The Toppers')))
-    countries = [
-        "US, Idaho"
-        "US, Iowa",
-        "US, Alabama",
-        "US, Alaska",
-        "US, Arizona",
-        "US, Arkansas",
-        "US, Wyoming",
-        "US, Washington",
-        "US, Vermont",
-        "US, Virginia",
-        "US, Wisconsin",
-        "US, Hawaii",
-        "US, Delaware",
-        "US, Georgia",
-        "US, West Virginia",
-        "US, Illinois",
-        "US, Indiana",
-        "US, California",
-        "US, Kansas",
-        "US, Kentucky",
-        "US, Colorado",
-        "US, Connecticut",
-        "US, Louisiana",
-        "US, Massachusetts",
-        "US, Minnesota",
-        "US, Mississippi",
-        "US, Missouri",
-        "US, Michigan",
-        "US, Montana",
-        "US, Maine",
-        "US, Maryland",
-        "US, Nebraska",
-        "US, Nevada",
-        "US, New Hampshire",
-        "US, New Jersey",
-        "US, New York",
-        "US, New Mexico",
-        "US, Ohio",
-        "US, Oklahoma",
-        "US, Oregon",
-        "US, Pennsylvania",
-        "US, Rhode Island",
-        "US, North Dakota",
-        "US, North Carolina",
-        "US, Tennessee",
-        "US, Texas",
-        "US, Florida",
-        "US, South Dakota",
-        "US, South Carolina",
-        "US, Utah",
-        "Russia,"
-        "Italy",
-        "Moldova,"
-        "Georgia",
-        "Albania",
-        "Andorra",
-        "Armenia",
-        "Australia",
-        "Austria",
-        "Azerbaijan",
-        "Belarus",
-        "Belgium",
-        "Bosnia and Herzegovina",
-        "Bulgaria",
-        "Croatia",
-        "Cyprus",
-        "Czech Republic",
-        "Denmark",
-        "Estonia",
-        "Finland",
-        "France",
-        "Germany",
-        "Greece",
-        "Hungary",
-        "Iceland",
-        "Ireland",
-        "Israel",
-        "Italy",
-        "Latvia",
-        "Lithuania",
-        "Luxembourg",
-        "Malta",
-        "Monaco",
-        "Montenegro",
-        "Morocco",
-        "Netherlands",
-        "North Macedonia",
-        "Norway",
-        "Poland",
-        "Portugal",
-        "Romania",
-        "San Marino",
-        "Serbia",
-        "Slovakia",
-        "Slovenia",
-        "Spain",
-        "Sweden",
-        "Switzerland",
-        "Turkey",
-        "Ukraine",
-        "United Kingdom"
-    ]
-    # add_countries(countries)

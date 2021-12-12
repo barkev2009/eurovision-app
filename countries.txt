@@ -1,0 +1,101 @@
+US, Idaho
+US, Iowa
+US, Alabama
+US, Alaska
+US, Arizona
+US, Arkansas
+US, Wyoming
+US, Washington
+US, Vermont
+US, Virginia
+US, Wisconsin
+US, Hawaii
+US, Delaware
+US, Georgia
+US, West Virginia
+US, Illinois
+US, Indiana
+US, California
+US, Kansas
+US, Kentucky
+US, Colorado
+US, Connecticut
+US, Louisiana
+US, Massachusetts
+US, Minnesota
+US, Mississippi
+US, Missouri
+US, Michigan
+US, Montana
+US, Maine
+US, Maryland
+US, Nebraska
+US, Nevada
+US, New Hampshire
+US, New Jersey
+US, New York
+US, New Mexico
+US, Ohio
+US, Oklahoma
+US, Oregon
+US, Pennsylvania
+US, Rhode Island
+US, North Dakota
+US, North Carolina
+US, Tennessee
+US, Texas
+US, Florida
+US, South Dakota
+US, South Carolina
+US, Utah
+Russia
+Italy
+Moldova
+Georgia
+Albania
+Andorra
+Armenia
+Australia
+Austria
+Azerbaijan
+Belarus
+Belgium
+Bosnia and Herzegovina
+Bulgaria
+Croatia
+Cyprus
+Czech Republic
+Denmark
+Estonia
+Finland
+France
+Germany
+Greece
+Hungary
+Iceland
+Ireland
+Israel
+Italy
+Latvia
+Lithuania
+Luxembourg
+Malta
+Monaco
+Montenegro
+Morocco
+Netherlands
+North Macedonia
+Norway
+Poland
+Portugal
+Romania
+San Marino
+Serbia
+Slovakia
+Slovenia
+Spain
+Sweden
+Switzerland
+Turkey
+Ukraine
+United Kingdom
