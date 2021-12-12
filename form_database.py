@@ -2,6 +2,7 @@ import sqlite3
 from sqlite3 import Error
 import json
 import pandas as pd
+import os
 
 
 def conn_and_cursor():
@@ -34,8 +35,10 @@ def get_all_artists():
 
 def get_all_songs():
     conn, cursor = conn_and_cursor()
-    cursor.execute('select * from main_app_song')
-    return {item[1]: item[0] for item in [*cursor.fetchall()]}
+    cursor.execute('SELECT mas.id, mas.name, maa.name from main_app_song mas '
+                   'join main_app_artist maa '
+                   'on mas.artist_id = maa.id')
+    return {(item[1], item[2]): item[0] for item in [*cursor.fetchall()]}
 
 
 def get_all_years():
@@ -76,21 +79,35 @@ def add_entries_by_year(year):
             entry[-2],
             get_all_artists().get(entry[-3])
         )
-        if entry[-2] not in get_all_songs().keys():
+        if (entry[-2], entry[-3]) not in get_all_songs().keys():
             print(full_song_query)
             cursor.execute(full_song_query)
             conn.commit()
 
-        full_entry_query = entry_query.format(
-            get_all_steps().get(entry[1]),
-            get_all_songs().get(entry[-2]),
-            entry[3],
-            get_all_years().get(entry[2]),
-            entry[-1]
-        )
-        print(full_entry_query)
-        cursor.execute(full_entry_query)
-        conn.commit()
+        entry_check_query = '''
+        SELECT mas.name, maa.name, mac.name, may."year" from main_app_entry mae 
+        join main_app_song mas 
+        on mae.song_id = mas.id 
+        join main_app_artist maa 
+        on mas.artist_id = maa.id
+        JOIN main_app_conteststep mac 
+        on mae.contest_step_id = mac.id
+        join main_app_year may 
+        on mae.year_id = may.id
+        '''
+        cursor.execute(entry_check_query)
+        entry_check_list = cursor.fetchall()
+        if (entry[-2], entry[-3], entry[1], entry[2]) not in entry_check_list:
+            full_entry_query = entry_query.format(
+                get_all_steps().get(entry[1]),
+                get_all_songs().get((entry[-2], entry[-3])),
+                entry[3],
+                get_all_years().get(entry[2]),
+                entry[-1]
+            )
+            print(full_entry_query)
+            cursor.execute(full_entry_query)
+            conn.commit()
 
 
 def add_countries(countries_list: list):
@@ -107,14 +124,24 @@ def add_contest_steps():
     steps = ('First Semi-Final', 'Second Semi-Final', 'Grand Final')
     query = 'insert into main_app_conteststep (name) values ("{}")'
     for step in steps:
-        print(query.format(step))
-        cursor.execute(query.format(step))
-        conn.commit()
+        if step not in get_all_steps().keys():
+            print(query.format(step))
+            cursor.execute(query.format(step))
+            conn.commit()
+
+
+def fill_db():
+    add_contest_steps()
+    available_years = list({int(item.split('.')[0][-4:]) for item in os.listdir('db_files')})
+    for year in available_years:
+        add_entries_by_year(year)
 
 
 if __name__ == '__main__':
     # print(get_all_years())
-    # add_entries_by_year(2009)
+    # add_entries_by_year(2021)
+    fill_db()
+    # print(get_all_songs().get(('Shine', 'The Toppers')))
     countries = [
         "US, Idaho"
         "US, Iowa",
