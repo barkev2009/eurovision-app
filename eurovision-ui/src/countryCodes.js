@@ -660,6 +660,10 @@ const countryCodes = [
       "label": "North Macedonia"
     },
     {
+      "value": "MK",
+      "label": "Macedonia"
+    },
+    {
       "value": "MP",
       "label": "Northern Mariana Islands"
     },

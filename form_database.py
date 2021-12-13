@@ -68,7 +68,7 @@ def add_entries_by_year(year):
 
         full_artist_query = artist_query.format(
             entry[-3],
-            countries.get(entry[4])
+            countries.get(entry[4].strip())
         )
         if entry[-3] not in get_all_artists().keys():
             print(full_artist_query)
