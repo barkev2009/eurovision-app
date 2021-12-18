@@ -1,0 +1,70 @@
+.table-row {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tab {
+  background-color: blueviolet;
+  width: 400px;
+  height: 50px;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 22px;
+}
+
+.score {
+  width: 100px;
+  justify-content: center;
+}
+
+.order {
+  justify-content: right;
+  width: 50px;
+  height: 5rem;
+  margin-left: 2%;
+}
+
+.flag {
+  display: flex;
+  flex-direction: column;
+}
+
+.artist {
+  height: 5rem;
+}
+
+.place-tab {
+  margin-left: 10px;
+  width: auto;
+  padding-right: 10px;
+}
+
+.qualtable {
+  border: 1px solid teal;
+  height: 50px;
+  width: 150px;
+  font-size: 26px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.country-text {
+  font-size: 12px;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 2%;
+  color: gray;
+}
