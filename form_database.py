@@ -130,7 +130,7 @@ def add_countries():
 
 def add_contest_steps():
     conn, cursor = conn_and_cursor()
-    steps = ('First Semi-Final', 'Second Semi-Final', 'Grand Final')
+    steps = ('First Semi-Final', 'Second Semi-Final', 'Grand Final', 'ESC-22 | Czech Republic')
     query = 'insert into main_app_conteststep (name) values ("{}")'
     for step in steps:
         if step not in get_all_steps().keys():

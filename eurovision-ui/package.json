@@ -13,6 +13,7 @@
     "react-flagkit": "^2.0.4",
     "react-native-countries": "^1.0.3",
     "react-rating": "^2.0.5",
+    "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
     "react-select-country-list": "^2.2.3",
     "svg-country-flags": "^1.2.10",

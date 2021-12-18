@@ -62,3 +62,16 @@
   left: 0px;
   z-index: 0;
 }
+
+.entries-link {
+  background-color: blueviolet;
+  cursor: pointer;
+  padding: 5vw 10vw;
+  color: antiquewhite;
+  font-weight: bold;
+  font-size: 46px;
+  position: fixed;
+  top: calc(10vw + 10vw);
+  left: calc(5vw + 25vw);
+  border-radius: 10px;
+}
