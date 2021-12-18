@@ -5,6 +5,7 @@ import YearSelect from './components/YearSelect';
 import StepSelect from './components/StepSelect';
 import logo from '../../images/logo.png'
 import SortSelect from './components/SortSelect';
+import '../common/styles/common.css'
 
 const EntriesPage = () => {
 // Setting hooks

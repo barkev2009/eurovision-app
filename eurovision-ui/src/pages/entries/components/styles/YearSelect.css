@@ -1,26 +1,13 @@
-.select-container {
-    width: 600px;
-    height: 50px;
-    font-family: inherit;
-    appearance: none;
-    position: fixed;
-    top: 0px;
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    left: 0px
-}
-
 .select {
     position: relative;
 }
 
 .select select {
-    width: 300px;
+    width: 15vw;
     height: 50px;
     font-family: inherit;
     appearance: none;
-    font-size: 25px;
+    font-size: 1.2vw;
     background-color: rgb(101, 33, 165);
     border: 1px solid blue;
     color: white;
@@ -35,7 +22,7 @@
     width: auto;
     left: 0px;
     padding-left: 5%;
-    padding-right: 30%;
+    padding-right: 10vw;
     padding-top: 3%;
 
 }

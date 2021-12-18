@@ -35,12 +35,12 @@
 }
 
 .name-prompt {
-  font-size: 70%;
+  font-size: 1.2vw;
   background-color: yellow;
   border: 2px solid darkblue;
   font-weight: bold;
   color: black;
-  width: 25%;
+  width: 25vw;
   height: 50px;
   vertical-align: middle;
   text-align: center;
@@ -52,26 +52,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.header {
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  background-color: honeydew;
-  left: 0px;
-  z-index: 0;
-}
-
-.entries-link {
-  background-color: blueviolet;
-  cursor: pointer;
-  padding: 5vw 10vw;
-  color: antiquewhite;
-  font-weight: bold;
-  font-size: 46px;
-  position: fixed;
-  top: calc(10vw + 10vw);
-  left: calc(5vw + 25vw);
-  border-radius: 10px;
 }
