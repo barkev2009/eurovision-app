@@ -1196,7 +1196,7 @@ const countryCodes = [
         "label": "US, South Carolina"
     },
     {
-        "value": "Flag_of_Utah",
+        "value": "Flag_of_Utah_(2011-present)",
         "label": "US, Utah"
     }
   ];

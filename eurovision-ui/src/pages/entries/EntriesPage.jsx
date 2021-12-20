@@ -132,12 +132,12 @@ const EntriesPage = () => {
     return (
         <header className="App-header">
             <div className="select-container">
-            <img src={logo} alt='euro_logo'/>
-            <div className='header'></div>
-            <SortSelect defaultValue='Choose the sorting rule' onChange={changeSortRule} curValue={curSortRule.current} curStep={curStep.current}/>
-            <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
-            <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
-            <div className='name-prompt'>{promptTranslation[prompt]}</div>
+              <img src={logo} alt='euro_logo'/>
+              <div className='header'></div>
+              <SortSelect defaultValue='Choose the sorting rule' onChange={changeSortRule} curValue={curSortRule.current} curStep={curStep.current}/>
+              <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
+              <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
+              <div className='name-prompt'>{promptTranslation[prompt]}</div>
             </div>
             {entries.length !== 0 ? <List entries={entries} callPrompt={changePrompt}/> : <div>No entries available</div>}
             <div style={{fontSize: '14px', paddingBottom: '4px'}}>My e-mail</div>

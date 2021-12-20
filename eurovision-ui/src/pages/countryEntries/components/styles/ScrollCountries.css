@@ -1,0 +1,58 @@
+.countries {
+    height: 90vh;
+    left: 0px;
+    overflow: scroll;
+}
+
+.country-block {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: black;
+    padding-top: 90px;
+}
+
+.countries ul {
+    padding-left: 0px;
+}
+
+.countries li {
+    padding-right: 1vw;
+}
+
+.country-item {
+    list-style-type: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.country-item:hover {
+    background-color: blueviolet;
+    color: white;
+    -webkit-transition: background 1s;
+    -moz-transition: background 1s;
+    -ms-transition: background 1s;
+    -o-transition: background 1s;
+    transition: background 1s;
+    cursor: pointer;
+}
+
+.sel-country-item {
+    list-style-type: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    color: black;
+    border-right: 0.5vw solid rgb(0, 197, 0);
+}

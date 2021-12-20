@@ -5,7 +5,7 @@ import '../common/styles/common.css'
 
 const Banner = () => {
     return (
-        <div>
+        <div className='select-container'>
             <img src={logo} alt='euro_logo'/>
             <div className='header'></div>
         </div>

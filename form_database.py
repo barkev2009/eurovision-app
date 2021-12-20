@@ -64,6 +64,8 @@ def add_entries_by_year(year):
                   "difficulty, originality, show, sympathy) values ({}, {}, {}, {}, {}, 0, 0, 0, 0, 0, 0)"
 
     for entry in entry_records:
+        if entry[4] == 'Macedonia':
+            entry[4] = 'North Macedonia'
         print(entry)
 
         full_artist_query = artist_query.format(
