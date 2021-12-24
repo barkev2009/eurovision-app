@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import stepsMap from '../../mappingFiles/mapContestSteps';
 import Banner from '../common/Banner';
 import '../common/styles/common.css'
 import CountryData from './components/CountryData';
@@ -12,6 +13,7 @@ const CountryEntries = () => {
     const [countryData, setCountryData] = useState([])
     const [allEntries, setAllEntries] = useState([])
     const [selectedCountry, setSelectedCountry] = useState('')
+
 
     useEffect( () => {
         axios.get(
@@ -38,7 +40,8 @@ const CountryEntries = () => {
             if (!!localStorage.selectedCountry) {
                 setSelectedCountry(localStorage.selectedCountry)
             }
-            const countryData = allEntries.filter(entry => entry.song.artist.country.name === selectedCountry).sort((a, b) => a.year.year - b.year.year);
+            const countryData = allEntries.filter(entry => entry.song.artist.country.name === selectedCountry)
+                .sort((a, b) => (a.year.year - b.year.year) || (stepsMap[a.contest_step.name] - stepsMap[b.contest_step.name]));
             setCountryData(countryData);
                 
         }, [selectedCountry, allEntries]

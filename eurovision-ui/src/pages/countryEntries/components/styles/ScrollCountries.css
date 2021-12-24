@@ -2,6 +2,7 @@
     height: 90vh;
     left: 0px;
     overflow: scroll;
+    width: 40vw;
 }
 
 .country-block {
