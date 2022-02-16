@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/eurovision-app/static/css/main.0fb35aaa.chunk.css",
-    "main.js": "/eurovision-app/static/js/main.e645d22b.chunk.js",
-    "main.js.map": "/eurovision-app/static/js/main.e645d22b.chunk.js.map",
+    "main.js": "/eurovision-app/static/js/main.28407f2c.chunk.js",
+    "main.js.map": "/eurovision-app/static/js/main.28407f2c.chunk.js.map",
     "runtime-main.js": "/eurovision-app/static/js/runtime-main.1c5810e4.js",
     "runtime-main.js.map": "/eurovision-app/static/js/runtime-main.1c5810e4.js.map",
     "static/js/2.daa5fa2e.chunk.js": "/eurovision-app/static/js/2.daa5fa2e.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1c5810e4.js",
     "static/js/2.daa5fa2e.chunk.js",
     "static/css/main.0fb35aaa.chunk.css",
-    "static/js/main.e645d22b.chunk.js"
+    "static/js/main.28407f2c.chunk.js"
   ]
 }
