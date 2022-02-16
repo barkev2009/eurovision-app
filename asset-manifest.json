@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/eurovision-app/static/css/main.0fb35aaa.chunk.css",
+    "main.js": "/eurovision-app/static/js/main.e645d22b.chunk.js",
+    "main.js.map": "/eurovision-app/static/js/main.e645d22b.chunk.js.map",
+    "runtime-main.js": "/eurovision-app/static/js/runtime-main.1c5810e4.js",
+    "runtime-main.js.map": "/eurovision-app/static/js/runtime-main.1c5810e4.js.map",
+    "static/js/2.daa5fa2e.chunk.js": "/eurovision-app/static/js/2.daa5fa2e.chunk.js",
+    "static/js/2.daa5fa2e.chunk.js.map": "/eurovision-app/static/js/2.daa5fa2e.chunk.js.map",
+    "index.html": "/eurovision-app/index.html",
+    "static/css/main.0fb35aaa.chunk.css.map": "/eurovision-app/static/css/main.0fb35aaa.chunk.css.map",
+    "static/js/2.daa5fa2e.chunk.js.LICENSE.txt": "/eurovision-app/static/js/2.daa5fa2e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/eurovision-app/static/media/euro_back.be833088.jpg",
+    "static/media/logo.16e39178.png": "/eurovision-app/static/media/logo.16e39178.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1c5810e4.js",
+    "static/js/2.daa5fa2e.chunk.js",
+    "static/css/main.0fb35aaa.chunk.css",
+    "static/js/main.e645d22b.chunk.js"
+  ]
+}
