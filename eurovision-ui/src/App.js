@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path='/' element={<MainPage />}/>
+        <Route exact path='/eurovision-app' element={<MainPage />}/>
         <Route exact path='/entries' element={<EntriesPage />}/>
         <Route exact path='/country-entries' element={<CountryEntries />}/>
       </Routes>

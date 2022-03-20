@@ -6,6 +6,9 @@ import StepSelect from './components/StepSelect';
 import logo from '../../images/logo.png'
 import SortSelect from './components/SortSelect';
 import '../common/styles/common.css'
+import { connect } from 'react-redux';
+import { setInitialEntriesStart } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 const EntriesPage = () => {
 // Setting hooks
@@ -28,6 +31,8 @@ const EntriesPage = () => {
     sympathy: 'Личная симпатия'
   }
 
+  const dispatch = useDispatch();
+
   // Setting initial data
   useEffect(() => {
     document.title = 'Eurovision-Rating-App'
@@ -42,6 +47,11 @@ const EntriesPage = () => {
       setInitEntries(response.data)
     })
     }, [])
+
+  useEffect(() => {
+    // dispatch(setInitialEntries()
+    setInitialEntriesStart()
+  }, [])
   
   useEffect(() => {
     axios({
@@ -127,6 +137,7 @@ const EntriesPage = () => {
     curSortRule.current = e
     setAllEntries()
     localStorage.setItem('sortRule', curSortRule.current)
+    setInitialEntriesStart()
   }
 
     return (
@@ -145,4 +156,8 @@ const EntriesPage = () => {
         )
 }
 
-export default EntriesPage
+const mapDispatchToProps = {
+  setInitialEntriesStart
+}
+
+export default connect(null, mapDispatchToProps)(EntriesPage)
