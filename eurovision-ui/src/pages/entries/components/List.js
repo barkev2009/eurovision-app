@@ -1,5 +1,5 @@
 import ListItem from "./ListItem"
-import './styles/List.css'
+import '../../../styles/style.css'
 
 const List = (props) => {
     return (

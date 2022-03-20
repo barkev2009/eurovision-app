@@ -2,10 +2,9 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import stepsMap from '../../mappingFiles/mapContestSteps';
 import Banner from '../common/Banner';
-import '../common/styles/common.css'
+import '../../styles/style.css'
 import CountryData from './components/CountryData';
 import ScrollCountries from './components/ScrollCountries';
-import './components/styles/CountryEntries.css'
 
 const CountryEntries = () => {
 

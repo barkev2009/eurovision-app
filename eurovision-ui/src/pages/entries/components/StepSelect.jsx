@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/YearSelect.css'
+import '../../../styles/style.css'
 
 const StepSelect = ({steps, onChange, defaultValue, curValue}) => {
 

@@ -1,4 +1,4 @@
-import './styles/PlaceInput.css'
+import '../../../styles/style.css'
 
 const PlaceInput = ({defaultValue, onChange, colorStyle}) => {
     return (

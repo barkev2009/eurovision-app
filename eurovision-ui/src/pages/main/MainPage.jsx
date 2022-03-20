@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Banner from '../common/Banner';
-import '../common/styles/common.css'
-import './components/styles/MainPage.css'
+import '../../styles/style.css'
 
 const MainPage = () => {
     return (

@@ -1,5 +1,5 @@
 import StarContainer from './stars/StarContainer';
-import './styles/ListItem.css'
+import '../../../styles/style.css'
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import EuroFlag from './EuroFlag';

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../styles/Star.css'
+import '../../../../styles/style.css'
 import Rating from 'react-rating';
 
 const Star = (props) => {

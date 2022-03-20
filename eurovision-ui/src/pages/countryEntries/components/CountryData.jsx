@@ -1,6 +1,6 @@
 import React from 'react'
 import CountryListItem from './CountryListItem'
-import './styles/CountryData.css'
+import '../../../styles/style.css'
 
 const CountryData = ({data}) => {
     return (

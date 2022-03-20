@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/YearSelect.css'
+import '../../../styles/style.css'
 
 const SortSelect = ({onChange, curValue, defaultValue, curStep}) => {
     return (

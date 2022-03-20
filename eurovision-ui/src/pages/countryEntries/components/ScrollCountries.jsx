@@ -1,6 +1,6 @@
 import React from 'react'
 import CountryItem from './CountryItem'
-import './styles/ScrollCountries.css'
+import '../../../styles/style.css'
 
 const ScrollCountries = ({countries, onClick, selectedCountry}) => {
     return (
