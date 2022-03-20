@@ -39,13 +39,8 @@ const EntriesPage = () => {
 
   // Setting initial data
   useEffect(() => {
-    document.title = 'Eurovision-Rating-App'
-    curSortRule.current = localStorage.sortRule ? localStorage.sortRule : 'By entry order'
-  }, [])
-
-
-  useEffect(() => {
     dispatch(setInitialEntries())
+    curSortRule.current = localStorage.sortRule ? localStorage.sortRule : 'By entry order'
     curYear.current = localStorage.year ? parseFloat(localStorage.year) : years[0]
     curStep.current = localStorage.step ? localStorage.step : steps[0]
     setAllEntries()
@@ -98,7 +93,7 @@ const EntriesPage = () => {
   }
 
   return (
-    <header className="App-header">
+    <div className="App-main">
       <div className="select-container">
         <img src={logo} alt='euro_logo' className='logo' onClick={navToMain}/>
         <div className='header'></div>
@@ -109,7 +104,7 @@ const EntriesPage = () => {
       </div>
       {entriesState.length !== 0 ? <List entries={entriesState} callPrompt={changePrompt} /> : <div>No entries available</div>}
       <div style={{ fontSize: '14px', paddingBottom: '4px' }}>My e-mail</div>
-    </header>
+    </div>
   )
 }
 

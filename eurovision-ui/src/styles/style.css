@@ -1,4 +1,4 @@
- .App-header {
+ .App-main {
    min-height: 100vh;
    display: flex;
    flex-direction: column;
@@ -7,20 +7,6 @@
    font-size: calc(10px + 2vmin);
    color: white;
    padding-top: 100px;
- }
-
- .App-link {
-   color: #61dafb;
- }
-
- @keyframes App-logo-spin {
-   from {
-     transform: rotate(0deg);
-   }
-
-   to {
-     transform: rotate(360deg);
-   }
  }
 
  .name-prompt {
