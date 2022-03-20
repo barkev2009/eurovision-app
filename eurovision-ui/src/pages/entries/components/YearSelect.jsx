@@ -8,7 +8,7 @@ const YearSelect = ({years, onChange, defaultValue, curValue}) => {
             <select onChange={e => onChange(e.target.value)} value={curValue}>
                 <option disabled>{defaultValue}</option>
                 {years.map(year => 
-                <option key={year.year}>{year.year}</option>
+                <option key={year}>{year}</option>
                 )}
             </select>
         </div>

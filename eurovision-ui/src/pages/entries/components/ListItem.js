@@ -56,13 +56,12 @@ const ListItem = (props) => {
         }
     }, [entry.place])
 
-    const testFunc = (e) => {
+    const changeStar = (e) => {
         let newScore = [...starScore];
         newScore[e.order].score = e.score;
         setStarScore(newScore);
         let patchBody = {};
         patchBody[newScore[e.order].name] = newScore[e.order].score;
-        console.log(patchBody);
         axios.patch(
             `http://127.0.0.1:8000/api/entries/${entry.id}/`,
             patchBody
@@ -109,7 +108,7 @@ const ListItem = (props) => {
                 <div className='entry tab'>{entry.song.artist.name}</div>
             </div>            
             <div className='entry tab artist'>{entry.song.name}</div>            
-            <StarContainer key={entry.id} some_key={entry.id} score={starScore} click={testFunc} callPrompt={props.callPrompt}/>
+            <StarContainer key={entry.id} some_key={entry.id} score={starScore} click={changeStar} callPrompt={props.callPrompt}/>
             <div className='entry tab score'>{starScore.reduce((a, b) => a + b.score, 0).toFixed(2)}</div>
             <div>
                 {entry.contest_step.name !== 'Grand Final' ? 

@@ -8,7 +8,7 @@ const StepSelect = ({steps, onChange, defaultValue, curValue}) => {
             <select onChange={e => onChange(e.target.value)} value={curValue}>
                 <option disabled>{defaultValue}</option>
                 {steps.map(step => 
-                <option key={step.name}>{step.name}</option>
+                <option key={step}>{step}</option>
                 )}
             </select>
         </div>

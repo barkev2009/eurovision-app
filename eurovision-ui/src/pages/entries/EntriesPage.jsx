@@ -6,19 +6,16 @@ import StepSelect from './components/StepSelect';
 import logo from '../../images/logo.png'
 import SortSelect from './components/SortSelect';
 import '../common/styles/common.css'
-import { connect } from 'react-redux';
-import { setInitialEntriesStart } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
+import { setInitialEntries } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const EntriesPage = () => {
-// Setting hooks
+  // Setting hooks
   const [initEntries, setInitEntries] = useState([])
-  const [years, setYears] = useState([]);
-  const [steps, setSteps] = useState([]);
 
   const [entries, setEntries] = useState([]);
   const [prompt, setPrompt] = useState('');
-  
+
   const curYear = useRef('')
   const curStep = useRef('')
   const curSortRule = useRef('By entry order')
@@ -32,6 +29,8 @@ const EntriesPage = () => {
   }
 
   const dispatch = useDispatch();
+  const steps = useSelector(state => state.steps.steps)
+  const years = useSelector(state => state.years.years)
 
   // Setting initial data
   useEffect(() => {
@@ -46,48 +45,31 @@ const EntriesPage = () => {
     }).then(response => {
       setInitEntries(response.data)
     })
-    }, [])
+  }, [])
+
 
   useEffect(() => {
-    // dispatch(setInitialEntries()
-    setInitialEntriesStart()
-  }, [])
-  
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: 'http://127.0.0.1:8000/api/years/'
-    }).then(response => {
-      setYears(response.data);
-      curYear.current = localStorage.year ? parseFloat(localStorage.year) : response.data[0].year
-    })
-    }, [])
-  
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: 'http://127.0.0.1:8000/api/contest_steps/'
-    }).then(response => {
-      setSteps(response.data);
-      curStep.current = localStorage.step ? localStorage.step : response.data[0].name
-      const entriesToSet = [...initEntries].filter((entry) => entry.year.year === curYear.current && entry.contest_step.name === curStep.current)
-      switch (curSortRule.current) {
-        case 'By entry order':
-          setEntries(entriesToSet.sort((a, b) => a.order - b.order));
-          break;
-        case 'By personal rating':
-          setEntries(entriesToSet.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) - 
+    dispatch(setInitialEntries())
+    curYear.current = localStorage.year ? parseFloat(localStorage.year) : years[0]
+    curStep.current = localStorage.step ? localStorage.step : steps[0]
+    const entriesToSet = [...initEntries].filter((entry) => entry.year.year === curYear.current && entry.contest_step.name === curStep.current)
+    switch (curSortRule.current) {
+      case 'By entry order':
+        setEntries(entriesToSet.sort((a, b) => a.order - b.order));
+        break;
+      case 'By personal rating':
+        setEntries(entriesToSet.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) -
           [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a_s, b_s) => a_s + b_s, 0)));
-          break;
-        case 'By place':
-          setEntries(entriesToSet.sort((a, b) => a.place - b.place));
-          break;
-        default:
-          setEntries(entriesToSet.sort((a, b) => a.order - b.order));
-          break;                  
-      }
-    })
-    }, [initEntries])
+        break;
+      case 'By place':
+        setEntries(entriesToSet.sort((a, b) => a.place - b.place));
+        break;
+      default:
+        setEntries(entriesToSet.sort((a, b) => a.order - b.order));
+        break;
+    }
+
+  }, [initEntries])
 
   // Setting functions to pass into components
   const changePrompt = (e) => {
@@ -105,15 +87,15 @@ const EntriesPage = () => {
           setEntries(newEntries.sort((a, b) => a.order - b.order));
           break;
         case 'By personal rating':
-          setEntries(newEntries.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) - 
-          [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a_s, b_s) => a_s + b_s, 0)));
+          setEntries(newEntries.sort((a, b) => [b.purity, b.show, b.difficulty, b.originality, b.sympathy].reduce((a_s, b_s) => a_s + b_s, 0) -
+            [a.purity, a.show, a.difficulty, a.originality, a.sympathy].reduce((a_s, b_s) => a_s + b_s, 0)));
           break;
         case 'By place':
           setEntries(newEntries.sort((a, b) => a.place - b.place));
           break;
         default:
           setEntries(newEntries.sort((a, b) => a.order - b.order));
-          break;                  
+          break;
       }
     })
   }
@@ -137,27 +119,23 @@ const EntriesPage = () => {
     curSortRule.current = e
     setAllEntries()
     localStorage.setItem('sortRule', curSortRule.current)
-    setInitialEntriesStart()
   }
 
-    return (
-        <header className="App-header">
-            <div className="select-container">
-              <img src={logo} alt='euro_logo'/>
-              <div className='header'></div>
-              <SortSelect defaultValue='Choose the sorting rule' onChange={changeSortRule} curValue={curSortRule.current} curStep={curStep.current}/>
-              <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current}/>
-              <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current}/>
-              <div className='name-prompt'>{promptTranslation[prompt]}</div>
-            </div>
-            {entries.length !== 0 ? <List entries={entries} callPrompt={changePrompt}/> : <div>No entries available</div>}
-            <div style={{fontSize: '14px', paddingBottom: '4px'}}>My e-mail</div>
-        </header>
-        )
+  return (
+    <header className="App-header">
+      <div className="select-container">
+        <img src={logo} alt='euro_logo' />
+        <div className='header'></div>
+        <SortSelect defaultValue='Choose the sorting rule' onChange={changeSortRule} curValue={curSortRule.current} curStep={curStep.current} />
+        <StepSelect steps={steps} onChange={changeFilterStep} defaultValue="Choose the step" curValue={curStep.current} />
+        <YearSelect years={years} onChange={changeFilterYear} defaultValue="Choose the year" curValue={curYear.current} />
+        <div className='name-prompt'>{promptTranslation[prompt]}</div>
+      </div>
+      {entries.length !== 0 ? <List entries={entries} callPrompt={changePrompt} /> : <div>No entries available</div>}
+      <div style={{ fontSize: '14px', paddingBottom: '4px' }}>My e-mail</div>
+    </header>
+  )
 }
 
-const mapDispatchToProps = {
-  setInitialEntriesStart
-}
 
-export default connect(null, mapDispatchToProps)(EntriesPage)
+export default EntriesPage;

@@ -7,7 +7,6 @@ const Star = (props) => {
     const [rating, setRating] = useState(props.score)
 
     function changeStarColor(e) {
-        console.log(e);
         if (e < 0.15) {
             e = 0;
         } else if (e > 0.85) {
