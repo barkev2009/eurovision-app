@@ -38,9 +38,11 @@ const EntriesPage = () => {
   )
 
   // Setting initial data
+
   useEffect(() => {
-    dispatch(setInitialEntries())
-    curSortRule.current = localStorage.sortRule ? localStorage.sortRule : 'By entry order'
+    if (entries.length === 0) {
+      dispatch(setInitialEntries())
+    }
     curYear.current = localStorage.year ? parseFloat(localStorage.year) : years[0]
     curStep.current = localStorage.step ? localStorage.step : steps[0]
     setAllEntries()
