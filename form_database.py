@@ -66,7 +66,7 @@ def add_entries_by_year(year):
     for entry in entry_records:
         if entry[4].strip() == 'Macedonia':
             entry[4] = 'North Macedonia'
-        print(entry)
+        # print(entry)
 
         full_artist_query = artist_query.format(
             entry[-3],
@@ -87,7 +87,7 @@ def add_entries_by_year(year):
             conn.commit()
 
         entry_check_query = '''
-        SELECT mas.name, maa.name, mac.name, may."year" from main_app_entry mae 
+        SELECT mas.name, maa.name, mac.name, may."year", mae.id, mae."order" from main_app_entry mae 
         join main_app_song mas 
         on mae.song_id = mas.id 
         join main_app_artist maa 
@@ -99,7 +99,19 @@ def add_entries_by_year(year):
         '''
         cursor.execute(entry_check_query)
         entry_check_list = cursor.fetchall()
-        if (entry[-2], entry[-3], entry[1], entry[2]) not in entry_check_list:
+        try_filter = list(
+            filter(
+                lambda x: all(
+                    (x[0] == entry[-2], x[1] == entry[-3], x[2] == entry[1], x[3] == entry[2])
+                ), entry_check_list
+            )
+        )
+        if entry[3] != try_filter[0][-1]:
+            update_query = 'update main_app_entry set "order" = {} where id = {}'.format(entry[3], try_filter[0][-2])
+            print('UPDATE\t', update_query)
+            cursor.execute(update_query)
+            conn.commit()
+        if len(try_filter) == 0:
             full_entry_query = entry_query.format(
                 get_all_steps().get(entry[1]),
                 get_all_songs().get((entry[-2], entry[-3])),
@@ -107,7 +119,7 @@ def add_entries_by_year(year):
                 get_all_years().get(entry[2]),
                 entry[-1]
             )
-            print(full_entry_query)
+            print('INSERT\t', full_entry_query)
             cursor.execute(full_entry_query)
             conn.commit()
 
