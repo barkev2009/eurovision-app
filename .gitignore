@@ -1,4 +1,4 @@
-db.sqlite3
 eurovision.db
 .idea
 __pycache__
+eurovision-ui/package-lock.json

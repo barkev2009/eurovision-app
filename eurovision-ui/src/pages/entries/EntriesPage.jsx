@@ -47,7 +47,7 @@ const EntriesPage = () => {
     curStep.current = localStorage.step ? localStorage.step : steps[0]
     setAllEntries()
 
-  }, [entries])
+  }, [])
 
   // Setting functions to pass into components
   const changePrompt = (e) => {

@@ -48,6 +48,7 @@ US, Florida
 US, South Dakota
 US, South Carolina
 US, Utah
+U.S. Virgin Islands
 Russia
 Italy
 Moldova
@@ -87,6 +88,7 @@ Netherlands
 North Macedonia
 Norway
 Poland
+Puerto Rico
 Portugal
 Romania
 San Marino

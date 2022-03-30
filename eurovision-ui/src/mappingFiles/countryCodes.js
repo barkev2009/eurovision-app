@@ -1198,7 +1198,11 @@ const countryCodes = [
     {
         "value": "Flag_of_Utah_(2011-present)",
         "label": "US, Utah"
-    }
+    },
+    {
+      "value": "Flag_of_the_United_States_Virgin_Islands",
+      "label": "U.S. Virgin Islands"
+  }
   ];
   
   export default countryCodes;

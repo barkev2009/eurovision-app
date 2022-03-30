@@ -106,11 +106,6 @@ def add_entries_by_year(year):
                 ), entry_check_list
             )
         )
-        if entry[3] != try_filter[0][-1]:
-            update_query = 'update main_app_entry set "order" = {} where id = {}'.format(entry[3], try_filter[0][-2])
-            print('UPDATE\t', update_query)
-            cursor.execute(update_query)
-            conn.commit()
         if len(try_filter) == 0:
             full_entry_query = entry_query.format(
                 get_all_steps().get(entry[1]),
@@ -122,6 +117,12 @@ def add_entries_by_year(year):
             print('INSERT\t', full_entry_query)
             cursor.execute(full_entry_query)
             conn.commit()
+        else:
+            if entry[3] != try_filter[0][-1]:
+                update_query = 'update main_app_entry set "order" = {} where id = {}'.format(entry[3], try_filter[0][-2])
+                print('UPDATE\t', update_query)
+                cursor.execute(update_query)
+                conn.commit()
 
 
 def add_entries():
@@ -144,7 +145,18 @@ def add_countries():
 
 def add_contest_steps():
     conn, cursor = conn_and_cursor()
-    steps = ('First Semi-Final', 'Second Semi-Final', 'Grand Final', 'ESC-22 | Czech Republic', 'Semi-Final')
+    steps = (
+        'First Semi-Final',
+        'Second Semi-Final',
+        'Grand Final',
+        'ESC-22 | Czech Republic',
+        'Semi-Final',
+        'Heat 1',
+        'Heat 2',
+        'Heat 3',
+        'Heat 4',
+        'Heat 5'
+    )
     query = 'insert into main_app_conteststep (name) values ("{}")'
     for step in steps:
         if step not in get_all_steps().keys():
