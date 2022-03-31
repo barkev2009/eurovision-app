@@ -5,9 +5,12 @@ import axios from 'axios';
 import EuroFlag from './EuroFlag';
 import QualTable from './QualTable';
 import PlaceInput from './PlaceInput';
+import { useDispatch } from 'react-redux';
+import { setInitialEntries } from '../../../redux/actions';
 
 const ListItem = (props) => {
     const entry = props.entry;
+    const dispatch = useDispatch();
     const score = [
         {
             id: 0,
@@ -66,7 +69,7 @@ const ListItem = (props) => {
             `http://127.0.0.1:8000/api/entries/${entry.id}/`,
             patchBody
         )
-
+        dispatch(setInitialEntries());
     }
 
     const callQual = (e) => {
@@ -74,6 +77,7 @@ const ListItem = (props) => {
             `http://127.0.0.1:8000/api/entries/${entry.id}/`,
             {qualified : e}
         )
+        dispatch(setInitialEntries());
     }
 
     const changeInput = (e) => {
@@ -81,6 +85,7 @@ const ListItem = (props) => {
             `http://127.0.0.1:8000/api/entries/${entry.id}/`,
             {place : parseInt(e)}
         )
+        dispatch(setInitialEntries());
         switch (parseInt(e)) {
             case 1:
                 setColorStyle({background: 'gold', color: 'black'});

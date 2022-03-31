@@ -45,9 +45,10 @@ const EntriesPage = () => {
     }
     curYear.current = localStorage.year ? parseFloat(localStorage.year) : years[0]
     curStep.current = localStorage.step ? localStorage.step : steps[0]
+    curSortRule.current = localStorage.sortRule ? localStorage.sortRule : 'By entry order'
     setAllEntries()
 
-  }, [])
+  }, [entries])
 
   // Setting functions to pass into components
   const changePrompt = (e) => {
