@@ -1202,7 +1202,11 @@ const countryCodes = [
     {
       "value": "Flag_of_the_United_States_Virgin_Islands",
       "label": "U.S. Virgin Islands"
-  }
+    },
+    {
+      "value": "Flag_of_Northern_Mariana_Islands",
+      "label": "Northern Mariana Islands"
+    }
   ];
   
   export default countryCodes;
