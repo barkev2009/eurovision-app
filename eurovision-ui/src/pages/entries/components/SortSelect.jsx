@@ -7,7 +7,7 @@ const SortSelect = ({onChange, curValue, defaultValue, curStep}) => {
             <select onChange={e => onChange(e.target.value)} value={curValue}>
                 <option disabled>{defaultValue}</option>
                 {['By entry order', 'By personal rating', 'By place'].map(step => 
-                <option key={step} disabled={step === 'By place' && curStep !== 'Grand Final'}>{step}</option>
+                <option key={step} disabled={step === 'By place' && !curStep.includes('Grand Final')}>{step}</option>
                 )}
             </select>            
         </div>

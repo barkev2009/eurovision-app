@@ -116,7 +116,7 @@ const ListItem = (props) => {
             <StarContainer key={entry.id} some_key={entry.id} score={starScore} click={changeStar} callPrompt={props.callPrompt}/>
             <div className='entry tab score'>{starScore.reduce((a, b) => a + b.score, 0).toFixed(2)}</div>
             <div>
-                {entry.contest_step.name !== 'Grand Final' ? 
+                {!entry.contest_step.name.includes('Grand Final') ? 
                 <QualTable initQual={entry.qualified} callQual={callQual}/> : 
                 <PlaceInput defaultValue={entry.place} onChange={changeInput} colorStyle={colorStyle}/>}
             </div>

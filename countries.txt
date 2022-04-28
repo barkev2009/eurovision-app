@@ -49,6 +49,9 @@ US, South Dakota
 US, South Carolina
 US, Utah
 U.S. Virgin Islands
+US, Washington, D.C.
+American Samoa
+Guam
 Russia
 Italy
 Moldova

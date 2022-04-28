@@ -149,6 +149,9 @@ def add_contest_steps():
         'First Semi-Final',
         'Second Semi-Final',
         'Grand Final',
+        'First Semi-Final, ASC',
+        'Second Semi-Final, ASC',
+        'Grand Final, ASC',
         'ESC-22 | Czech Republic',
         'Semi-Final',
         'Heat 1',
@@ -158,6 +161,7 @@ def add_contest_steps():
         'Heat 5'
     )
     query = 'insert into main_app_conteststep (name) values ("{}")'
+    print(get_all_steps().keys())
     for step in steps:
         if step not in get_all_steps().keys():
             print(query.format(step))

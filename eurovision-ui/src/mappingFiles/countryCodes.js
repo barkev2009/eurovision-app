@@ -1206,6 +1206,10 @@ const countryCodes = [
     {
       "value": "Flag_of_Northern_Mariana_Islands",
       "label": "Northern Mariana Islands"
+    },
+    {
+      "value": "Flag_of_the_District_of_Columbia",
+      "label": "US, Washington, D.C."
     }
   ];
   

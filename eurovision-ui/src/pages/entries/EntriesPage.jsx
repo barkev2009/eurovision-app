@@ -82,7 +82,7 @@ const EntriesPage = () => {
 
   const changeFilterStep = (e) => {
     curStep.current = e
-    if (curStep.current !== 'Grand Final' && curSortRule.current === 'By place') {
+    if (!curStep.current.includes('Grand Final') && curSortRule.current === 'By place') {
       curSortRule.current = 'By entry order'
     }
     setAllEntries()
