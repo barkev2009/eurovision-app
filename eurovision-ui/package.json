@@ -24,7 +24,6 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "svg-country-flags": "^1.2.10",
-    "tiny-flag-react": "^2.0.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
